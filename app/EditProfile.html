@@ -1,0 +1,27 @@
+<div>
+    <br />
+    <h1 class="jumbotron text-center">Edit Details</h1>
+    <form name="editForm" ng-submit="changeDetails()">
+    <div id="editMiddle">
+        <div>First Name:</div>
+        <div><input type="text" ng-model="changeFirstName" placeholder="Edit First Name"></div>
+        <div>Last Name:</div>
+        <div><input type="text" ng-model="changeLastName" placeholder="Edit Last Name"> </div>
+        <div>Mobile Number:</div>
+        <div><input type="tel" ng-model="changeMobileNumber" placeholder="Edit Mobile Number"> </div>
+        <div>Street:</div>
+        <div><input type="text" ng-model="changeStreet" placeholder="Edit Street"> </div>
+        <div>Post Code:</div>
+        <div><input type="text" ng-model="changePostCode" placeholder="Edit Post Code"> </div>
+        <div>City:</div>
+        <div><input type="text" ng-model="changeCity" placeholder="Edit City"></div>
+        <div>Email:</div>
+        <div><input type="email" ng-model="changeEmail" placeholder="Edit Email"> </div>
+        <div>Alternative Mobile Phone:</div>
+        <div><input type="tel" ng-model="changeAlternativeMobile" placeholder="Edit Alternative Mobile"> </div>
+        <br/>
+        <input type="submit" value="Change Details" class="btn btn-success editButton">
+        </div>
+
+    </form>
+</div>
