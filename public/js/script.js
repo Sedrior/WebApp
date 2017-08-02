@@ -403,9 +403,9 @@ scotchApp.controller('BookingController',
         };
 
         var getCarPriceRefresh=$interval(function(){
-
+            $scope.getCarPrice();
         }, 1000)
-        $scope.getCarPrice();
+        
         $timeout(function(){
             $scope.getConfigList();
         }, 50)
