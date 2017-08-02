@@ -1,1 +1,278 @@
+/* app css stylesheet */
+
+
+
+.hoverwell:hover {
+  background-color: #52575c;
+  cursor: pointer;
+}
+select, textarea {
+  color: #52575c;
+}
+
+.well-title {
+  margin-top: 0px;
+}
+.session {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.votingWidget {
+  height: 64px;
+  padding: 7px;
+}
+
+.votingButton {
+  padding-left:6px;
+  cursor:pointer;
+}
+
+.sessionThumbnail {
+    height:100%;
+    overflow: hidden;
+}
+
+
+.calendar{
+    border: 1px solid #555;
+    width: 238px;
+}
+.calendar .row {
+    margin-left: 0px;
+}
+.calendar .row div{
+    float:left;
+    padding:2px;
+    width:30px;
+    text-align:center;
+}
+.calendar-nav-left {
+    float:left;
+    width: 20px;
+    padding:2px;
+}
+.calendar-nav-right {
+    float:left;
+    width: 20px;
+    padding:2px;
+    text-align:right;
+}
+
+.calendar .row .calendar-hdr {
+    padding:2px;
+    float:left;
+    width: 166px;
+    text-align:center;
+}
+.pointer {
+    cursor: pointer;
+}
+.date-picker {
+    position: absolute;
+    top: -7px;
+    left: 209px;
+    background-color: #272b30;
+}
+
+#map{
+    height:480px;
+    width:480px;
+    margin:auto;
+    margin-top:40px;
+    margin-left:40px;
+    float:left;
+
+}
+
+#mapEngland{
+    height:600px;
+    width:100%;
+    margin:auto;
+    margin-top:40px;
+    float:left;
+}
+
+#middle {
+    display: block;
+    margin-right: auto;
+    width: 300px;
+    height: 600px;
+    margin-top: 35px;
+    padding-left: 380px;
+    float:left;
+
+
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+#description {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#infowindow-content .title {
+  font-weight: bold;
+}
+
+#infowindow-content {
+  display: none;
+}
+
+#map #infowindow-content {
+  display: inline;
+}
+
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
+
+#pac-container {
+    white-space:normal;
+    padding-bottom: 12px;
+    margin-right: 12px;
+    width: 250px;
+    height:50px;
+}
+#pac-container2 {
+    white-space:normal;
+    padding-bottom: 12px;
+    margin-right: 12px;
+    width: 250px;
+    height:50px;
+}
+
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+h1.hidden {
+    display: none;
+}
+
+#voucher{
+    float:left;
+    margin-left:430px;
+    margin-top:-145px;
+}
+
+.float{
+    float:left;
+}
+
+#login{
+    position: fixed;
+    display: block;
+    border: double;
+    width:400px;
+    height:200px;
+    margin: auto;
+    margin-left: 550px;
+    margin-top:210px;
+    padding-top:50px;
+    background-color: #22262a;
+    text-align: center;
+}
+
+#carType{
+    margin:auto;
+    margin-left: 150px;
+}
+
+#myProfile{
+    position:absolute;
+    width:400px;
+    height:400px;
+    margin:auto;
+    margin-left: 700px;
+    margin-top:50px;
+    text-align:center;
+}
+
+.button{
+    margin:auto;
+    margin-left:450px;
+
+}
+
+
+.paddingConfirmBooking{
+    margin:auto;
+    margin-left:350px;
+}
+
+.tableDisplay{
+    display:block;
+}
+
+#editMiddle{
+    margin-right: auto;
+    width: 300px;
+    height: 600px;
+    margin-top: 35px;
+    padding-left: 640px;
+    float:left;
+}
+
+.editButton{
+    margin:auto;
+    margin-left:40px;
+}
+
+.inputPassengers{
+    width:68px;
+}
+
+.marginLogin{
+    margin-top:200px;
+}
+
 
