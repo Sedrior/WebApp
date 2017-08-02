@@ -2,12 +2,13 @@
   "name": "demoapp",
   "version": "1.0.0",
   "description": "This project is a sample application demonstrating a more fully developed realistic single page angular application.",
-  "main": "index.js",
+  "main": "/js/script.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node web-server.js"
   },
   "author": "Joe Eames & Jim Cooper",
   "license": "ISC",
