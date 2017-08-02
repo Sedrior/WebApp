@@ -1,14 +1,14 @@
-//express,path librarii
+const path = require('path');
+const express = require('express');
+const app = express();
+const port = 3000;
 
-var express=require('express');
-var path=require('path');
+app.use(express.static('public'));
 
-//function call express
-var app=express();
-var rootPath=path.normalize(__dirname + '/../');
+app.get('/', function(req, res) {
+    res.sendfile(path.join(__dirname, '/index.html'));
+});
 
-app.use(express.static(rootPath + '/app'));
-
-app.listen(3000);
-
-console.log("Listening on port 3000...")
+app.listen(process.env.PORT || port, function () {
+    console.log('Express is running on ' + port);
+});
