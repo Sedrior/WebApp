@@ -1,1 +1,84 @@
+<div class="container" ng-model="userDetails">
+    <br />
+    <h1 class="jumbotron text-center">User Profile </h1>
+    <div align="center">
+        <img alt="User Pic" src="https://res.cloudinary.com/dejzo3x6l/image/upload/v1462601844/login%20page%20design/3.png" height=200 width=200 class="img-circle img-responsive">
+    </div>
+    <br />
+    <table class="table table-user-information">
+        <tr>
+            <td>Id:</td>
+            <td>{{userDetails.id}}</td>
+        </tr>
+        <tr>
+            <td>Id company:</td>
+            <td>{{userDetails.id_company}}</td>
+        </tr>
+        <tr>
+            <td>Id company group:</td>
+            <td>{{userDetails.id_company_group}}</td>
+        </tr>
+
+        <tr>
+            <td>Id user type:</td>
+            <td>{{userDetails.id_user_type}}</td>
+        </tr>
+        <tr>
+
+            <td>Email:</td>
+            <td>{{userDetails.email}}</td>
+        </tr>
+        <tr>
+            <td>Firstname:</td>
+            <td>{{userDetails.firstname}}</td>
+        </tr>
+        <tr>
+            <td>Lastname</td>
+            <td>{{userDetails.lastname}}</td>
+        </tr>
+        <tr>
+            <td>Postcode</td>
+            <td>{{userDetails.postcode}}</td>
+        </tr>
+        <tr>
+            <td>Street:</td>
+            <td>{{userDetails.street}}</td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td>{{userDetails.city}}</td>
+        </tr>
+        <tr>
+            <td>Mobile number:</td>
+            <td>{{userDetails.mobile_number}}</td>
+        </tr>
+        <tr>
+            <td>Alternative mobile:</td>
+            <td>{{userDetails.alternativemobile}}</td>
+        </tr>
+        <tr>
+            <td>Online:</td>
+            <td>{{userDetails.online}}</td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td>{{userDetails.status}}</td>
+        </tr>
+        <tr>
+            <td>Created at:</td>
+            <td>{{userDetails.created_at}}</td>
+        </tr>
+        <tr>
+            <td>Updated at:</td>
+            <td>{{userDetails.updated_at}}</td>
+        </tr>
+        <tr>
+            <td>Api key:</td>
+            <td>{{userDetails.api_key}}</td>
+        </tr>
+    </table>
+
+    <a href="#/editProfile" class="btn btn-info button">Edit Credentials</a>
+    <br /><br />
+</div>
 
