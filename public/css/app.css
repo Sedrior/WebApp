@@ -13,10 +13,14 @@ thead{
     background-color: #4a4a4a;
 }
 
+
 tbody{
-    background-color: #6f6f6f;
+    background-color: #2f3339;
 }
 
+.tableBookingcolor{
+    background-color: #6f6f6f;
+}
 .hoverwell:hover {
   background-color: #52575c;
   cursor: pointer;
