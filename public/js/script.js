@@ -582,15 +582,15 @@ scotchApp.controller('DriversMap',
                             $scope.available[i] = $scope.drivers[i].Bookings[i];
                             string='Driver:' + $scope.drivers[i].first_name + ' ' + $scope.drivers[i].last_name + '\n' + 'Status: Away';
                             if($scope.available[i].status=='DOW'){
-                                 iconBase= "img/arts-crafts.png";
+                                 iconBase= "https://image.ibb.co/gZLVsF/employment.png";
                             }
                             else
                                 if($scope.available[i].status=='DAP'){
-                                    iconBase="img/halloween.png";
+                                    iconBase="https://image.ibb.co/jJm3CF/schools.png";
                                 }
                                 else
                                     if($scope.available[i].status=='POB'){
-                                        iconBase="img/festivals.png"
+                                        iconBase="https://image.ibb.co/bK0fsF/toys_store.png"
                                     }
                         }
                         else{
