@@ -564,18 +564,9 @@ scotchApp.controller('EditController',
 
 scotchApp.controller('DriversMap',
     function($scope,$http,$timeout,$cookieStore){
-        var initMap = function ()
-        {
-            directionsDisplay = new google.maps.DirectionsRenderer();
-            directionsService = new google.maps.DirectionsService();
-            console.dir(document.getElementById('mapEngland'));
-            map = new google.maps.Map(document.getElementById('mapEngland'), {
-                center: {lat: 52.3781, lng: -2.4360},
-                zoom: 7
-            });
-            directionsDisplay.setMap(map);
-        };
-
+        $scope.drivers=[];
+        $scope.available=[];
+        var string='';
         $scope.getDrivers = function(){
             var url='https://api-test.insoftd.com/v1/operator/driver_to_car/monitoring_list?fields=(Driver.tag;Driver.first_name;Driver.last_name;Car.id_car;Car.model;Car.reg_number;CarType.rank;CarType.type;Driver.id;Driver.picture;DriverToCar.available_from;DriverToCar.id_driver_to_car;DriverToCar.updated_at;DriverToCar.lat;DriverToCar.id_plot_zone;DriverToCar.lng;DriverToCar.speed;DriverToCar.accuracy)&order=(DriverToCar.order_number%20ASC)';
             var Key=$cookieStore.get('key');
@@ -583,19 +574,69 @@ scotchApp.controller('DriversMap',
             $http.get(url).then(
                 function(obj)
                 {
-                    console.dir(obj);
+                    var iconBase= "img/games.png";
+                    for(i=0;i<obj.data.records.length;i++) {
+                        $scope.drivers[i] = obj.data.records[i];
+                        console.dir($scope.drivers[i]);
+                        if(obj.data.records[i].Bookings) {
+                            $scope.available[i] = $scope.drivers[i].Bookings[i];
+                            string='Driver:' + $scope.drivers[i].first_name + ' ' + $scope.drivers[i].last_name + '\n' + 'Status: Away';
+                            if($scope.available[i].status=='DOW'){
+                                 iconBase= "img/arts-crafts.png";
+                            }
+                            else
+                                if($scope.available[i].status=='DAP'){
+                                    iconBase="img/halloween.png";
+                                }
+                                else
+                                    if($scope.available[i].status=='POB'){
+                                        iconBase="img/festivals.png"
+                                    }
+                        }
+                        else{
+                            string='Driver: ' + $scope.drivers[i].first_name + ' ' + $scope.drivers[i].last_name + '\n' + 'Status: Available';
+                        }
+                        $scope.drivers[i].lat=Number($scope.drivers[i].lat);
+                        $scope.drivers[i].lng=Number($scope.drivers[i].lng);
+                        var myLatLng={lat:$scope.drivers[i].lat, lng:$scope.drivers[i].lng}
+                        var marker = new google.maps.Marker({
+                            position: myLatLng,
+                            map: mapEngland,
+                            title: string,
+                            icon: iconBase
+                        });
+                        marker.setMap(mapEngland);
+                    }
+
                 },
-            function()
-            {
-                    console.dir("eroor");
-            }
+                function()
+                {
+                    console.dir("error");
+                }
             );
+
+
         };
+
+        var initMap = function ()
+        {
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            directionsService = new google.maps.DirectionsService();
+            console.dir(document.getElementById('mapEngland'));
+            mapEngland = new google.maps.Map(document.getElementById('mapEngland'), {
+                center: {lat: 45.86667, lng: 24.78333},
+                zoom: 7
+            });
+            directionsDisplay.setMap(mapEngland);
+
+        };
+
+        $scope.getDrivers();
 
         $timeout(function ()
         {
             initMap();
         }, 50)
 
-        $scope.getDrivers();
+
     });
