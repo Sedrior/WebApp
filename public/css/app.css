@@ -10,17 +10,15 @@ label{
 }
 
 thead{
-    background-color: #4a4a4a;
+    background-color: #020014;
 }
-
-
 tbody{
-    background-color: #2f3339;
+    background-color: #112839;
+}
+.tableBookingcolor{
+    background-color: #101f2f;
 }
 
-.tableBookingcolor{
-    background-color: #393939;;
-}
 .hoverwell:hover {
   background-color: #52575c;
   cursor: pointer;
