@@ -574,7 +574,7 @@ scotchApp.controller('DriversMap',
             $http.get(url).then(
                 function(obj)
                 {
-                    var iconBase= "https://thumb.ibb.co/feQ5sF/sports.png";
+                    var iconBase= "https://image.ibb.co/et7JCF/sports.png";
                     for(i=0;i<obj.data.records.length;i++) {
                         $scope.drivers[i] = obj.data.records[i];
                         console.dir($scope.drivers[i]);
