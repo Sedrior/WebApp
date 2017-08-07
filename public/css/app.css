@@ -292,4 +292,8 @@ h1.hidden {
     margin-top:200px;
 }
 
-
+.overlay {
+    background-color: #EEEEEE;
+    position: absolute;
+    z-index:100;
+}
