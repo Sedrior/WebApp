@@ -234,8 +234,8 @@ scotchApp.controller('BookingController',
             };
             $scope.getCarPrice = function () {
                 var i;
-                $http.defaults.headers.common['Authorization'] = 'Basic c3VwcG9ydEBpbnNvZnRkLmNvbTppbnMwZnRERVZAfEAyNDg=';
-                $http.get('https://api-test.insoftd.com/v1/operator/car_type').then(
+                $http.defaults.headers.common['Authorization'] = 'Basic ' + key;
+                $http.get('https://api-test.insoftd.com/v1/client/car_type').then(
                     function (obj) {
                         for (i = 0; i < obj.data.records.length; i++) {
                             $scope.data[i] = obj.data.records[i];
@@ -305,8 +305,8 @@ scotchApp.controller('BookingController',
                         }]
                     };
 
-                    $http.defaults.headers.common['Authorization'] = 'Basic cG9wb3ZpY2kudHVkb3JAeWFob28uY29tOmFzZGFzZGFzZEB8QDI0OA==';
-                    var url = 'https://api-test.insoftd.com/v1/operator/price';
+                    $http.defaults.headers.common['Authorization'] = 'Basic ' + key;
+                    var url = 'https://api-test.insoftd.com/v1/client/price';
                     var voucherItem = '';
                     $http.post(url, data).then(
                         function (obj) {
@@ -370,7 +370,7 @@ scotchApp.controller('BookingController',
                         }
                     }]
                 };
-                var url = 'https://api-test.insoftd.com/v1/operator/booking';
+                var url = 'https://api-test.insoftd.com/v1/client/booking';
                 var Key = $cookieStore.get('key');
                 $http.defaults.headers.common['Authorization'] = 'Basic ' + Key;
                 $http.post(url, data).then(
@@ -387,8 +387,8 @@ scotchApp.controller('BookingController',
 
 
             $scope.getConfigList = function () {
-                $http.defaults.headers.common['Authorization'] = 'Basic cG9wb3ZpY2kudHVkb3JAeWFob28uY29tOmFzZGFzZGFzZEB8QDI0OA==';
-                var url = 'https://api-test.insoftd.com/v1/operator/config';
+                $http.defaults.headers.common['Authorization'] = 'Basic ' + key;
+                var url = 'https://api-test.insoftd.com/v1/client/config';
                 $http.get(url).then(
                     function (obj) {
                         var i = 0;
@@ -598,7 +598,7 @@ scotchApp.controller('DriversMap',
         $scope.available=[];
         var string='';
         $scope.getDrivers = function(){
-            var url='https://api-test.insoftd.com/v1/operator/driver_to_car/monitoring_list?fields=(Driver.tag;Driver.first_name;Driver.last_name;Car.id_car;Car.model;Car.reg_number;CarType.rank;CarType.type;Driver.id;Driver.picture;DriverToCar.available_from;DriverToCar.id_driver_to_car;DriverToCar.updated_at;DriverToCar.lat;DriverToCar.id_plot_zone;DriverToCar.lng;DriverToCar.speed;DriverToCar.accuracy)&order=(DriverToCar.order_number%20ASC)';
+            var url='https://api-test.insoftd.com/v1/client/driver_to_car/monitoring_list?fields=(Driver.tag;Driver.first_name;Driver.last_name;Car.id_car;Car.model;Car.reg_number;CarType.rank;CarType.type;Driver.id;Driver.picture;DriverToCar.available_from;DriverToCar.id_driver_to_car;DriverToCar.updated_at;DriverToCar.lat;DriverToCar.id_plot_zone;DriverToCar.lng;DriverToCar.speed;DriverToCar.accuracy)&order=(DriverToCar.order_number%20ASC)';
             var Key=$cookieStore.get('key');
             $http.defaults.headers.common['Authorization'] = 'Basic '+ Key;
             $http.get(url).then(
