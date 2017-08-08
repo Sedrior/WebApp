@@ -437,15 +437,15 @@ scotchApp.controller('BookingController',
 
 scotchApp.controller('ProfileController',
     function($scope,$http, $cookieStore,$location) {
-    if($cookieStore.get('key')) {
-        var i=$cookieStore.get('userdetails');
-        $scope.userDetails = JSON.parse(i);
-    }
-    else {
-        window.location='/#/';
-        alert('You must log in first.')
-    }
-});
+        if($cookieStore.get('key')) {
+            var i=$cookieStore.get('userdetails');
+            $scope.userDetails = JSON.parse(i);
+        }
+        else {
+            window.location='/#/';
+            alert('You must log in first.')
+        }
+    });
 
 scotchApp.controller('MyBookingsController',
     function($scope, $http, $cookieStore) {
@@ -475,129 +475,145 @@ scotchApp.controller('MyBookingsController',
 
 
 
-});
+    });
 
 scotchApp.controller('NavBarController',
     function($scope,$location, $cookieStore){
-    $scope.isActive = function(viewLocation) {
-        return viewLocation === $location.path();
-    };
-    $scope.logoutfunction = function() {
-        $cookieStore.remove('key');
-        $cookieStore.remove('userDetails');
-    }
-});
+        $scope.isActive = function(viewLocation) {
+            return viewLocation === $location.path();
+        };
+        $scope.logoutfunction = function() {
+            $cookieStore.remove('key');
+            $cookieStore.remove('userDetails');
+        }
+    });
 scotchApp.controller('LoginController',
     function($scope,$http,$cookieStore) {
-    $scope.sendCredentials = function()
-    {
-        var e_mail=$scope.email;
-        var pass=$scope.password;
-        var data = e_mail + ':' + pass + '@|@' + '248';
+        $scope.sendCredentials = function()
+        {
+            var e_mail=$scope.email;
+            var pass=$scope.password;
+            var data = e_mail + ':' + pass + '@|@' + '248';
 
-        var dataencode = btoa(data);
+            var dataencode = btoa(data);
 
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + dataencode;
-        var url='https://api-test.insoftd.com/v1/client/login';
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + dataencode;
+            var url='https://api-test.insoftd.com/v1/client/login';
 
-        $http.post(url,{
-            email: $scope.email
-            , password: $scope.password
-            , api_key: '248'
-        }).then(
-            function(obj){
-                alert("User logged successfully");
-                console.dir(obj.data.records);
-                $cookieStore.put('key', dataencode);
-                var stringObj=JSON.stringify(obj.data.records.user_details);
-                $cookieStore.put('userdetails',stringObj);
-                window.location = '/#/newBooking'
-            },
-            function(){
-                alert("Bad credentials try again");
-                console.dir('error');
-            }
-        );
+            $http.post(url,{
+                email: $scope.email
+                , password: $scope.password
+                , api_key: '248'
+            }).then(
+                function(obj){
+                    alert("User logged successfully");
+                    console.dir(obj.data.records);
+                    $cookieStore.put('key', dataencode);
+                    var stringObj=JSON.stringify(obj.data.records.user_details);
+                    $cookieStore.put('userdetails',stringObj);
+                    window.location = '/#/newBooking'
+                },
+                function(){
+                    alert("Bad credentials try again");
+                    console.dir('error');
+                }
+            );
 
-    };
+        };
 
 
-});
+    });
 
 scotchApp.controller('EditController',
     function($scope,$http,$cookieStore){
-    var changeFirstName = $scope.changeFirstName;
-    var changeLastName = $scope.changeLastName;
-    var changeMobileNumber = $scope.changeMobileNumber;
-    var changeStreet = $scope.changeStreet;
-    var changePostCode = $scope.changePostCode;
-    var changeCity = $scope.changeCity;
-    var changeEmail = $scope.changeEmail;
-    var changeAlternativeMobile = $scope.changeAlternativeMobile;
-    var i=$cookieStore.get('userdetails');
-    $scope.userDetails=JSON.parse(i);
+        var changeFirstName = $scope.changeFirstName;
+        var changeLastName = $scope.changeLastName;
+        var changeMobileNumber = $scope.changeMobileNumber;
+        var changeStreet = $scope.changeStreet;
+        var changePostCode = $scope.changePostCode;
+        var changeCity = $scope.changeCity;
+        var changeEmail = $scope.changeEmail;
+        var changeAlternativeMobile = $scope.changeAlternativeMobile;
+        var i=$cookieStore.get('userdetails');
+        $scope.userDetails=JSON.parse(i);
 
-    $scope.changeDetails = function(){
+        $scope.changeDetails = function(){
 
-        if($scope.changeFirstName){
-            $scope.userDetails.firstname=$scope.changeFirstName;
-        }
-        else
-            if($scope.changeLastName){
-            $scope.userDetails.lastname=$scope.changeLastName;
+            if($scope.changeFirstName){
+                $scope.userDetails.firstname=$scope.changeFirstName;
             }
             else
-                if($scope.changeMobileNumber){
+            if($scope.changeLastName){
+                $scope.userDetails.lastname=$scope.changeLastName;
+            }
+            else
+            if($scope.changeMobileNumber){
                 $scope.userDetails.mobile_number=$scope.changeMobileNumber;
-                }
-                else
-                    if($scope.changeStreet){
-                    $scope.userDetails.street=$scope.changeStreet;
-                    }
-                    else
-                        if($scope.changePostCode){
-                        $scope.userDetails.postcode=$scope.changePostCode;
-                        }
-                        else
-                            if($scope.changeCity){
-                            $scope.userDetails.city=$scope.changeCity;
-                            }
-                            else
-                                if($scope.changeEmail){
-                                $scope.userDetails.email=$scope.changeEmail;
-                                }
-                                else
-                                    if($scope.changeAlternativeMobile){
-                                    $scope.userDetails.alternativemobile=$scope.changeAlternativeMobile;
-                                    }
-        console.dir($scope.userDetails);
-        var stringObj=JSON.stringify($scope.userDetails);
-        $cookieStore.put('userdetails',stringObj);
-        var url='https://api-test.insoftd.com/v1/operator/login';
-        var Key=$cookieStore.get('key');
-        $http.defaults.headers.common['Authorization'] = 'Basic '+ Key;
-        $http.post(url,{
-            email: "popovici.tudor@yahoo.com"
-            , password: "asdasdasd"
-            , api_key: '248'
-        }).then(
-            function(obj) {
-                obj.data.records.user_details=$scope.userDetails;
-                console.dir(obj.data.records);
+            }
+            else
+            if($scope.changeStreet){
+                $scope.userDetails.street=$scope.changeStreet;
+            }
+            else
+            if($scope.changePostCode){
+                $scope.userDetails.postcode=$scope.changePostCode;
+            }
+            else
+            if($scope.changeCity){
+                $scope.userDetails.city=$scope.changeCity;
+            }
+            else
+            if($scope.changeEmail){
+                $scope.userDetails.email=$scope.changeEmail;
+            }
+            else
+            if($scope.changeAlternativeMobile){
+                $scope.userDetails.alternativemobile=$scope.changeAlternativeMobile;
+            }
+            console.dir($scope.userDetails);
+            var stringObj=JSON.stringify($scope.userDetails);
+            $cookieStore.put('userdetails',stringObj);
+            var url='https://api-test.insoftd.com/v1/operator/login';
+            var Key=$cookieStore.get('key');
+            $http.defaults.headers.common['Authorization'] = 'Basic '+ Key;
+            $http.post(url,{
+                email: "popovici.tudor@yahoo.com"
+                , password: "asdasdasd"
+                , api_key: '248'
+            }).then(
+                function(obj) {
+                    obj.data.records.user_details=$scope.userDetails;
+                    console.dir(obj.data.records);
 
-            },
-            function(){
-                console.dir('error')
-            });
+                },
+                function(){
+                    console.dir('error')
+                });
 
-        window.location = '/#/myProfile';
+            window.location = '/#/myProfile';
 
-    }
+        }
 
     });
 
 scotchApp.controller('DriversMap',
-    function($scope,$http,$timeout,$cookieStore){
+    function($scope,$http,$timeout,$cookieStore,$interval,$rootScope,socket)
+    {
+        var socketConnection = socket;
+        socketConnection.on('monitoring', function (ev, data)
+        {
+            $timeout(function ()
+            {
+                console.dir(ev);
+                console.dir(data);
+            }, 10);
+        });
+
+        $rootScope.$watch(socketConnection.notifications, function ()
+        {
+            console.dir(socketConnection);
+        });
+
         $scope.drivers=[];
         $scope.available=[];
         var string='';
@@ -616,16 +632,16 @@ scotchApp.controller('DriversMap',
                             $scope.available[i] = $scope.drivers[i].Bookings[i];
                             string='Driver:' + $scope.drivers[i].first_name + ' ' + $scope.drivers[i].last_name + '\n' + 'Status: Away';
                             if($scope.available[i].status=='DOW'){
-                                 iconBase= "https://image.ibb.co/fVnR2F/real_estate.png";
+                                iconBase= "https://image.ibb.co/fVnR2F/real_estate.png";
                             }
                             else
-                                if($scope.available[i].status=='DAP'){
-                                    iconBase="https://image.ibb.co/b1Rawa/clubs.png";
-                                }
-                                else
-                                    if($scope.available[i].status=='POB'){
-                                        iconBase="https://image.ibb.co/b4ujpv/schools.png"
-                                    }
+                            if($scope.available[i].status=='DAP'){
+                                iconBase="https://image.ibb.co/b1Rawa/clubs.png";
+                            }
+                            else
+                            if($scope.available[i].status=='POB'){
+                                iconBase="https://image.ibb.co/b4ujpv/schools.png"
+                            }
                         }
                         else{
                             string='Driver: ' + $scope.drivers[i].first_name + ' ' + $scope.drivers[i].last_name + '\n' + 'Status: Available';
@@ -662,15 +678,11 @@ scotchApp.controller('DriversMap',
                 zoom: 7
             });
             directionsDisplay.setMap(mapEngland);
-
-
-
-
-
-
         };
 
         $scope.getDrivers();
+
+
 
         $timeout(function ()
         {
