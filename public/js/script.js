@@ -155,7 +155,9 @@ scotchApp.controller('BookingController',
                                     if (status === google.maps.DirectionsStatus.OK) {
                                         $scope.distance.distance = result.routes[0].legs[0].distance.value;
                                         directionsDisplay.setDirections(result);
-                                        console.dir($scope.distance);
+                                        if($scope.temp.dropOff && $scope.temp.pickUp){
+                                            $scope.getCarPrice();
+                                        }
                                     }
                                 });
 
@@ -200,7 +202,9 @@ scotchApp.controller('BookingController',
                                     if (status === google.maps.DirectionsStatus.OK) {
                                         $scope.distance.distance = result.routes[0].legs[0].distance.value;
                                         directionsDisplay.setDirections(result);
-                                        console.dir($scope.distance);
+                                        if($scope.temp.dropOff && $scope.temp.pickUp){
+                                            $scope.getCarPrice();
+                                        }
                                     }
                                 });
 
