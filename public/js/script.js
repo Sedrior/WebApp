@@ -597,27 +597,16 @@ scotchApp.controller('EditController',
     });
 
 scotchApp.controller('DriversMap',
-    function($scope,$http,$timeout,$cookieStore,$interval,$rootScope,socket)
+    function($scope,$http,$timeout,$cookieStore,$interval,$rootScope, socket)
     {
-        var socketConnection = socket;
-        socketConnection.on('monitoring', function (ev, data)
-        {
-            $timeout(function ()
-            {
-                console.dir(ev);
-                console.dir(data);
-            }, 10);
-        });
 
-        $rootScope.$watch(socketConnection.notifications, function ()
-        {
-            console.dir(socketConnection);
-        });
 
         $scope.drivers=[];
         $scope.available=[];
         var string='';
-        $scope.getDrivers = function(){
+        $scope.getDrivers = function()
+        {
+            var i;
             var url='https://api-test.insoftd.com/v1/client/driver_to_car/monitoring_list?fields=(Driver.tag;Driver.first_name;Driver.last_name;Car.id_car;Car.model;Car.reg_number;CarType.rank;CarType.type;Driver.id;Driver.picture;DriverToCar.available_from;DriverToCar.id_driver_to_car;DriverToCar.updated_at;DriverToCar.lat;DriverToCar.id_plot_zone;DriverToCar.lng;DriverToCar.speed;DriverToCar.accuracy)&order=(DriverToCar.order_number%20ASC)';
             var Key=$cookieStore.get('key');
             $http.defaults.headers.common['Authorization'] = 'Basic '+ Key;
@@ -667,7 +656,7 @@ scotchApp.controller('DriversMap',
 
 
         };
-
+        $scope.getDrivers();
         var initMap = function ()
         {
             directionsDisplay = new google.maps.DirectionsRenderer();
@@ -680,14 +669,31 @@ scotchApp.controller('DriversMap',
             directionsDisplay.setMap(mapEngland);
         };
 
-        $scope.getDrivers();
-
 
 
         $timeout(function ()
         {
             initMap();
-        }, 50)
+        }, 50);
 
-
+        socket.connect();
+        console.dir(socket);
+        socket.on('monitoring', function (ev, data)
+        {
+            console.dir(ev);
+            console.dir(data);
+            console.dir(data.Booking.constructor.name);
+            for(var name in data.Booking){
+                console.dir(name);
+            }
+            console.dir(data.Booking[name]);
+            var i;
+            for(i=0;i<$scope.drivers.length;i++){
+                if($scope.drivers[i].id_driver_to_car==data.Booking[name].id_driver_to_car){
+                    $scope.drivers[i].status=data.Booking[name].status;
+                    break;
+                }
+            }
+            $scope.getDrivers();
+        });
     });
