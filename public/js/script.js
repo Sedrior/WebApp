@@ -454,7 +454,7 @@ scotchApp.controller('MyBookingsController',
             $scope.getBookings = function () {
                 var Key = $cookieStore.get('key');
                 $http.defaults.headers.common['Authorization'] = 'Basic ' + Key;
-                var url = 'https://api-test.insoftd.com/v1/operator/booking?q=[{"key":"Booking.id_client","op":"=", "value":"1"}]&limit=10';
+                var url = 'https://api-test.insoftd.com/v1/client/booking?q=[{"key":"Booking.id_client","op":"=", "value":"1"}]&limit=10';
                 $http.get(url).then(
                     function (obj) {
 
