@@ -47,7 +47,7 @@ scotchApp.controller('EditController',
             console.dir($scope.userDetails);
             var stringObj=JSON.stringify($scope.userDetails);
             $cookieStore.put('userdetails',stringObj);
-            var url='https://api-test.insoftd.com/v1/operator/login';
+            var url='https://api-test.insoftd.com/v1/client/login';
             var Key=$cookieStore.get('key');
             $http.defaults.headers.common['Authorization'] = 'Basic '+ Key;
             $http.post(url,{
