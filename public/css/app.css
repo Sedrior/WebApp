@@ -266,6 +266,8 @@ h1.hidden {
 
 .tableDisplay{
     display:block;
+    white-space: nowrap;
+
 }
 
 #editMiddle{
