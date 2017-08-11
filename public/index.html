@@ -7,6 +7,13 @@
     <script src="./js/script.js"></script>
     <script src="./js/socket.io.js"></script>
     <script src="js/socketService.js"></script>
+    <script src="./js/driversMap.js"></script>
+    <script src="./js/BookingController.js"></script>
+    <script src="./js/EditController.js"></script>
+    <script src="./js/LoginController.js"></script>
+    <script src="./js/MyBookingsController.js"></script>
+    <script src="./js/ProfileController.js"></script>
+    <script src="https://notify.insoftd.com:9910/socket.io/socket.io.js"></script>
     <script src="https://maps.google.com/maps/api/js?libraries=places,visualization,drawing,geometry,places&key=AIzaSyDvEEdVp7H6IvjKvyqqgdtTOE9WVbVMLIU">async defer</script>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/app.css"/>
@@ -15,6 +22,7 @@
 
 </head>
 <body ng-app="scotchApp">
+
 <div class="navbar" ng-controller="NavBarController">
     <div class="navbar-inner" ng-hide="isActive('/')">
 
@@ -31,7 +39,6 @@
 
     </div>
 </div>
-
 
 <div id="main">
     <div ng-view></div>
