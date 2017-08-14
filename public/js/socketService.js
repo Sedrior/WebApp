@@ -15,9 +15,8 @@ scotchApp.factory('socket', function ($rootScope) {
     {
         socket.on(eventName, function () {
             var args = arguments[0].params;
-            $rootScope.$broadcast('HEYYYYYYY');
             $rootScope.$apply(function ()
-            {$rootScope.$broadcast('HEYYYYYYY');
+            {
                 callback(eventName, args);
             });
         });
