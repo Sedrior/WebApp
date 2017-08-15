@@ -1,109 +1,118 @@
 <div>
     <br />
     <h1 class="jumbotron text-center">Booking details </h1>
-    <form id="middle" class="form-search" name="Booking" novalidate>
-        <div class="control-group">
-            <label class="control-label">Full name:</label>
-            <div class="controls">
-                <div class="input-prepend">
-                    <span class="add-on"><i class="fa fa-user"></i></span>
-                    <input class="span3" name="FullName" class="inputIcon" type="text" placeholder="Full name" ng-model="fullName" required>
+    <table class="table transparent">
 
-                </div>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Email address:</label>
-            <div class="controls">
-                <div class="input-prepend">
-                    <span class="add-on"><i class="fa fa-envelope"></i></span>
-                    <input class="span3" name="Email" class="inputIcon" type="email" placeholder="Email address" ng-model="email" required>
-                </div>
-            </div>
-        </div>
+        <tr>
+            <td>
+                <form id="middle" class="form-search" name="Booking" novalidate>
+                    <div class="control-group">
+                        <label class="control-label">Full name:</label>
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="fa fa-user"></i></span>
+                                <input class="span3" name="FullName" class="inputIcon" type="text" placeholder="Full name" ng-model="fullName" required>
 
-        <div class="control-group">
-            <label class="control-label">Phone number:</label>
-            <div class="controls">
-                <div class="input-prepend">
-                    <span class="add-on"><i class="fa fa-phone"></i></span>
-                    <input class="span3" name="Phone Number" class="inputIcon" type="tel" placeholder="Phone number" ng-model="phoneNumber" required>
-                </div>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label">Enter PickUp Address:</label>
-            <div class="controls">
-                <div class="input-prepend">
-                    <span class="add-on"><i class="fa fa-map-marker"></i></span>
-                    <input class="span3 inputIcon" type="text" placeholder="PickUp Address" ng-model="temp.pickUp.addressName" ng-change="searchLocation();pickup_show=true;">
-                    <div class="overlay">
-                        <div  ng-repeat="item in temp.pickUpSearch" ng-if="pickup_show">
-                            <button id="pac-container" class="btn-primary" ng-click="setLocation(item,'p');">{{item.description}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Email address:</label>
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="fa fa-envelope"></i></span>
+                                <input class="span3" name="Email" class="inputIcon" type="email" placeholder="Email address" ng-model="email" required>
+                            </div>
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label">Enter DropOff:</label>
-            <div class="controls">
-                <div class="input-prepend">
-                    <span class="add-on"><i class="fa fa-map-marker"></i></span>
-                    <input class="span3" class="inputIcon" type="text" placeholder="DropOff Address" ng-model="temp.dropOff.addressName" ng-change="searchLocation2();dropoff_show=true;">
-                    <div class="overlay">
-                        <div ng-repeat="item in temp.dropOffSearch" ng-if="dropoff_show">
-                            <button id="pac-container2" class="btn-primary" ng-click="setLocation2(item,'d')">{{item.description}}</button>
+                    <div class="control-group">
+                        <label class="control-label">Phone number:</label>
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="fa fa-phone"></i></span>
+                                <input class="span3" name="Phone Number" class="inputIcon" type="tel" placeholder="Phone number" ng-model="phoneNumber" required>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <br />
-        <p>Distance: {{distance.distance}}</p>
 
-        <p>
-            <i class="fa fa-user">
-            Number of passengers:
-            </i>
-            <select ng-model="passengersNumber" ng-change="getCarPrice()" class="inputPassengers">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-        </p>
+                    <div class="control-group">
+                        <label class="control-label">Enter PickUp Address:</label>
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="fa fa-map-marker"></i></span>
+                                <input class="span3 inputIcon" type="text" placeholder="PickUp Address" ng-model="temp.pickUp.addressName" ng-change="searchLocation();pickup_show=true;">
+                                <div class="overlay">
+                                    <div  ng-repeat="item in temp.pickUpSearch" ng-if="pickup_show">
+                                        <button id="pac-container" class="btn-primary" ng-click="setLocation(item,'p');">{{item.description}}</button>
+                                    </div>
+                                </div>
 
-        <div>
-            <p><i class="fa fa-car"> Car type:</i>
-                <select ng-model="car" ng-change="getCarPrice()" class="span2" >
-                    <option ng-repeat="x in newcars" value="{{x.id_type}}">{{x.type}}</option>
-                </select>
-            </p>
-        </div>
-        <p>Voucher code:</p>
-        <div><input type="text" class="form-control input-large" ng-model="voucherCode" placeholder="Add voucher code"></div>
-        <br />
-        <p>Price: {{distance.price | currency:"RON: "}}</p>
-    <p>Payment Method:</p>
-    <p>
-        <select ng-model="paymentsMethod">
-            <option ng-selected="x.value == paymentsMethod" ng-repeat="x in paymentMethod" value="{{x.value}}">{{x.name}}</option>
-        </select>
-    </p>
-    <p><button ng-disabled="Booking.$invalid" class="btn btn-success btn-large paddingConfirmBooking" class="float"
-               value="Confirm Booking" ng-click="sendData()">Confirm Booking</button></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Enter DropOff:</label>
+                        <div class="controls">
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="fa fa-map-marker"></i></span>
+                                <input class="span3" class="inputIcon" type="text" placeholder="DropOff Address" ng-model="temp.dropOff.addressName" ng-change="searchLocation2();dropoff_show=true;">
+                                <div class="overlay">
+                                    <div ng-repeat="item in temp.dropOffSearch" ng-if="dropoff_show">
+                                        <button id="pac-container2" class="btn-primary" ng-click="setLocation2(item,'d')">{{item.description}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <p>Distance: {{distance.distance}}</p>
 
-    </form>
+                    <p>
+                        <i class="fa fa-user">
+                            Number of passengers:
+                        </i>
+                        <select ng-model="passengersNumber" ng-change="getCarPrice()" class="inputPassengers">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </p>
+
+                    <div>
+                        <p><i class="fa fa-car"> Car type:</i>
+                            <select ng-model="car" ng-change="getCarPrice()" class="span2" >
+                                <option ng-repeat="x in newcars" value="{{x.id_type}}">{{x.type}}</option>
+                            </select>
+                        </p>
+                    </div>
+                    <p>Voucher code:</p>
+                    <div><input type="text" class="form-control input-large" ng-model="voucherCode" placeholder="Add voucher code"></div>
+                    <br />
+                    <p>Price: {{distance.price | currency:"RON: "}}</p>
+                    <p>Payment Method:</p>
+                    <p>
+                        <select ng-model="paymentsMethod">
+                            <option ng-selected="x.value == paymentsMethod" ng-repeat="x in paymentMethod" value="{{x.value}}">{{x.name}}</option>
+                        </select>
+                    </p>
+                    <p><button ng-disabled="Booking.$invalid" class="btn btn-success btn-large paddingConfirmBooking" class="float"
+                               value="Confirm Booking" ng-click="sendData()">Confirm Booking</button></p>
+
+                </form>
+                <div id="map"></div>
+            </td>
+        </tr>
 
 
+
+    </table>
 
 </div>
-<div id="map"></div>
+
 
