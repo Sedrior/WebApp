@@ -12,13 +12,9 @@ label{
 thead{
     background-color: #020014;
 }
-tbody{
+.tableBookingcolor{
     background-color: #112839;
 }
-.tableBookingcolor{
-    background-color: #101f2f;
-}
-
 .hoverwell:hover {
   background-color: #52575c;
   cursor: pointer;
